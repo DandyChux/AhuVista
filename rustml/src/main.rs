@@ -1,8 +1,4 @@
-mod processor;
-
-use std::env;
-
-fn main() {
-    println!("Starting the data processor...");
-    processor::process_data("Patient data goes here");
-}
+mod model;
+mod training;
+mod preprocessor;
+mod utils;

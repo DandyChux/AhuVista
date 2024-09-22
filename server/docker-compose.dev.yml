@@ -1,0 +1,47 @@
+name: AhuVista
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgresDB:/data/postgres
+    env_file:
+      # - ../.env
+      # - ../.env.local
+      - path: ./.env
+        required: true
+      - path: ./.env.local
+        required: false
+
+  server:
+    image: dandychux/ahuvista-server
+    container_name: ahuvista-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - '8000:8000'
+    depends_on:
+      - postgres
+    env_file:
+      # - ../.env
+      # - ../.env.local
+      - path: ./.env
+        required: true
+      - path: ./.env.local
+        required: false
+
+  # pgAdmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgAdmin
+  #   env_file:
+  #     - ./.env
+  #   ports:
+  #     - "5050:80"
+
+volumes:
+  postgresDB:

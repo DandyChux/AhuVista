@@ -21,4 +21,10 @@
 .DS_Store
 
 # environment file
-.env*
+.env
+.env.local
+
+# Artifacts
+*/target
+*/build
+*/dist

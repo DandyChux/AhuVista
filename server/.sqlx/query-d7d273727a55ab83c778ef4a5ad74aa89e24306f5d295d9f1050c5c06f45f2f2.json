@@ -1,0 +1,26 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n        INSERT INTO users (email, password_hash, user_type)\n        VALUES ($1, $2, $3)\n        ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Varchar",
+        "Varchar",
+        {
+          "Custom": {
+            "name": "user_type_enum",
+            "kind": {
+              "Enum": [
+                "patient",
+                "professional"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "d7d273727a55ab83c778ef4a5ad74aa89e24306f5d295d9f1050c5c06f45f2f2"
+}
