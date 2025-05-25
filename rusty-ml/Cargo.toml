@@ -1,0 +1,46 @@
+[package]
+name = "rusty-ml"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.86"
+burn = { version = "0.16.0", features = ["ndarray", "train", "std"] }
+candle-core = "0.6.0"
+candle-nn = "0.6.0"
+candle-transformers = "0.6.0"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4.5.9", features = ["derive"] }
+hf-hub = { version = "0.3.2", features = ["tokio"] }
+image = "0.25.6"
+lazy_static = "1.5.0"
+linfa = "0.7.0"
+linfa-clustering = "0.7.0"
+ndarray = "0.15.6"
+rand = "0.8.5"
+rand_distr = "0.4.3"
+regex = "1.10.2"
+serde = { version = "1.0.204", features = ["derive"] }
+serde_json = "1.0.120"
+tokenizers = "0.19.1"
+tract-onnx = "0.21.13"
+# For statistical operations
+statrs = "0.16"
+
+# Cross-compilation configuration for ARMv7 Linux targets
+# This specifies the linker to use when building for ARM devices
+[target.armv7-unknown-linux-gnueabihf]
+linker = "arm-linux-gnueabihf-gcc"
+rustflags = ["-C", "target-feature=+neon"]
+
+[target.aarch64-unknown-linux-gnu]
+linker = "aarch64-linux-gnu-gcc"
+rustflags = ["-C", "target-feature=+neon"]
+
+# Cross-compilation configuration for x86_64 Linux targets
+# This specifies the linker to use when building for x86_64 devices
+[target.x86_64-unknown-linux-gnu]
+linker = "x86_64-linux-gnu-gcc"
+rustflags = ["-C", "target-feature=+avx2"]
