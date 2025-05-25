@@ -1,0 +1,17 @@
+{
+	"$schema": "https://shadcn-solid.com/schema.json",
+	"tailwind": {
+		"config": "",
+		"css": {
+			"path": "src/index.css",
+			"variable": true
+		},
+		"color": "neutral",
+		"prefix": ""
+	},
+	"alias": {
+		"component": "~/components",
+		"cn": "~/lib",
+		"ui": "~/components/ui"
+	}
+}
